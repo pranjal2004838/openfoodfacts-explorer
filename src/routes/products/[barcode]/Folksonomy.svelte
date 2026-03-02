@@ -35,7 +35,7 @@
 
 		const filtered = arr.filter((item) => {
 			const key = keyExtractor(item);
-			console.log('Filtering item:', item, 'with key:', key);
+			console.debug('Filtering item:', item, 'with key:', key);
 			return key.includes(value) && !excluded.includes(key);
 		});
 
