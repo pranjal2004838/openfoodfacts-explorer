@@ -153,7 +153,11 @@
 						<IconMdiShareVariant class="h-4 w-4" />
 						{$_('compare.share.button')}
 					</button>
-					<button class="btn btn-outline btn-sm" onclick={() => compareStore.clear()}>
+					<button
+						class="btn btn-outline btn-sm"
+						onclick={() => compareStore.clear()}
+						aria-label={$_('compare.clear.button')}
+					>
 						{$_('compare.clear.button')}
 					</button>
 				{/if}
