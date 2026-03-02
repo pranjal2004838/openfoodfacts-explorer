@@ -143,6 +143,7 @@
 		<details class="dropdown dropdown-center md:w-50 lg:w-60" bind:this={sortDropdown}>
 			<summary
 				class="btn btn-outline btn-sm m-1 flex w-full items-center justify-start gap-2 text-xs lg:text-sm"
+				aria-label={$_('search.sort_by_label') + ': ' + getSelectedSortLabel()}
 			>
 				<span class="inline-block flex-1 truncate align-middle font-semibold">
 					{getSelectedSortLabel()}
