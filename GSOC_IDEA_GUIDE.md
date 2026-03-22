@@ -1,24 +1,22 @@
-# GSoC 2026 Proposal Draft (Maintainer Review Version)
+# GSoC 2026 Proposal Draft
 
-## Project Title
+## Title
 
-Mobile-First Feature Parity for Open Food Facts Explorer through a Shared Data Layer and Reusable OFF Components
+Mobile-First Feature Parity for Open Food Facts Explorer Through Shared Data Layer and Reusable OFF Components
 
-## Executive Summary
+## Abstract
 
-Open Food Facts Explorer is the long-term modern frontend for Open Food Facts. To accelerate adoption and reduce maintenance cost, I propose a focused project that improves 2 to 3 high-impact mobile user flows while introducing a reusable, typed data-access pattern for selected product/search features. The project is intentionally scoped for approximately 175 hours, with measurable outcomes, incremental pull requests, and clear handoff documentation for future contributors.
+This proposal targets two linked problems in Open Food Facts Explorer: inconsistent mobile experience in key journeys and repeated API integration logic across screens. The project delivers measurable user impact and maintainability impact by improving 3 committed critical flows, introducing a shared typed data layer for scoped endpoints, and integrating reusable OFF webcomponents where they reduce implementation cost and divergence.
 
-## Why This Matters Now
+## Why This Matters
 
-- Mobile is the dominant usage context, so friction in core flows has high user impact.
-- Similar API integration logic is repeated across screens, slowing feature delivery.
-- Explorer roadmap priorities already emphasize reuse of OFF SDK and OFF webcomponents.
+More than half of usage happens on mobile, where friction in search, product understanding, and editing has higher user cost. At the same time, repeated request/response handling slows contribution speed and increases regression risk. This project improves both user outcomes and contributor velocity in a way that aligns with Explorer roadmap priorities.
 
-In practical terms: this project improves user experience immediately and reduces long-term engineering drag.
+## Applicant Readiness
 
-## Applicant Readiness (Contribution Evidence)
+I am already contributing to Open Food Facts Explorer and have experience with project conventions, review cycles, and accessibility/API quality work.
 
-I have already contributed to Explorer in accessibility, reliability, and UX behavior improvements.
+### Relevant contribution evidence
 
 - Active PR: https://github.com/openfoodfacts/openfoodfacts-explorer/pull/1230
 - PR: https://github.com/openfoodfacts/openfoodfacts-explorer/pull/1109
@@ -31,123 +29,178 @@ I have already contributed to Explorer in accessibility, reliability, and UX beh
 
 ## Problem Statement
 
-Explorer needs stronger parity with key experiences from the standard Open Food Facts website, especially on mobile. At the same time, repeated API wiring across components increases cognitive load and maintenance overhead.
+Current parity gaps in important user journeys create inconsistent behavior and extra effort on mobile. In parallel, similar API logic is implemented in multiple places, which increases maintenance cost and review overhead.
 
-Primary problem:
+Plain-language version:
+Users need faster and clearer mobile flows. Contributors need one clean way to fetch and map data so features ship faster and safer.
 
-- Users encounter avoidable friction in key product/search journeys.
+## Project Goals
 
-Secondary problem:
+1. Improve 3 committed high-impact user flows (mobile-first, desktop-safe).
+2. Introduce a shared typed data access pattern for scoped product/search endpoints.
+3. Integrate at least 2 reusable OFF webcomponents in user-facing flows.
+4. Deliver migration documentation that enables follow-up parity work by future contributors.
 
-- Contributors duplicate API logic instead of reusing a consistent pattern.
-
-## Proposed Solution
-
-Deliver a scoped parity track combining architecture and UX improvements:
-
-1. Implement a shared, typed data-access layer for selected product/search endpoints.
-2. Improve 2 to 3 high-value mobile-first user flows end-to-end.
-3. Integrate OFF webcomponents where they speed delivery and increase consistency.
-4. Publish migration and extension guidance for future parity work.
-
-## Scope
+## Proposed Scope
 
 In scope:
 
-- Selected product/search flows only (maximum 3).
-- Shared data-access abstraction in targeted modules.
-- Reusable component integration and documentation.
+- Flow 1 (committed): Search results to product detail transition, plus reliable return-to-search state.
+- Flow 2 (committed): Product detail "quick understanding" section for key facts on mobile-first layout.
+- Flow 3 (committed): Basic edit with folksonomy value suggestion and stable autosuggest behavior.
+- Shared data-layer utilities and typed adapters for scoped endpoints.
+- Webcomponent integration where reuse lowers complexity.
 
 Out of scope:
 
-- Full-site parity in one GSoC cycle.
-- Global redesign unrelated to scoped flows.
-- Full migration of all API consumers.
+- Full parity of all legacy pages.
+- Full redesign of application visuals.
+- Global migration of every API endpoint.
+
+Committed implementation surfaces:
+
+- Flow 1 surface: src/routes/search and src/routes/products/[barcode]
+- Flow 2 surface: src/routes/products/[barcode]
+- Flow 3 surface: src/lib/ui/edit-product-steps and related folksonomy input wiring
+
+Why these exact flows were selected:
+
+- User behavior signal: mobile is the dominant usage context, so these high-frequency mobile journeys are highest leverage.
+- Maintainer and roadmap alignment: parity with main website, better maintainability, and reuse of OFF SDK/webcomponents.
+- Existing contribution signal: current work and recent PRs/issues already touch search/accessibility/edit behavior, so delivery risk is lower.
 
 ## Deliverables and Acceptance Criteria
 
-### D1: Shared Data Layer for Scoped Endpoints
+### Deliverable A: Shared typed data layer (scoped)
 
-- Typed wrappers and response mapping for selected APIs.
-- Standardized error/loading handling in migrated flows.
+Acceptance criteria:
 
-Acceptance:
+- New scoped data helpers are used by all targeted flows.
+- Error/loading states are standardized across targeted flows.
+- Duplicated API logic in targeted modules is reduced by at least 30%.
 
-- Duplicated API-call logic reduced by at least 30% in targeted modules.
-- No functional regressions in migrated flows.
+### Deliverable B: 3 committed high-impact flows
 
-### D2: Mobile-First Parity for 2 to 3 Core Flows
+Acceptance criteria:
 
-Candidate flows:
+- All targeted flows work on mobile and desktop with no functional regression.
+- Accessibility checks pass for all newly introduced interactive elements.
+- Flow-specific UX friction is reduced, measured by at least one concrete before/after indicator per flow, such as fewer interactions, clearer state transitions, or reduced dead-end states.
 
-- Search to product transition.
-- Product understanding via key panels.
-- Basic edit path for selected fields.
+Flow-level acceptance details:
 
-Acceptance:
+- Flow 1 (Search -> Product -> Back to Search): query/filter/sort/scroll context is preserved when returning to search results.
+- Flow 2 (Product quick understanding): key facts become visible and scannable earlier on mobile without extra navigation.
+- Flow 3 (Basic edit with folksonomy suggestions): no stale suggestion overwrite after rapid input changes.
 
-- Improved interaction clarity and reduced user friction in scoped flows.
-- Accessibility validation passed for new interactions.
-- Mobile performance on targeted pages improved or maintained.
+## Baseline Metrics and Measurement Plan (Preliminary)
 
-### D3: OFF Webcomponents Adoption
+The values below are rough starting assumptions to guide execution; exact baseline values are recorded in week 0 and compared against end-of-project values.
 
-- Integrate at least 2 reusable OFF webcomponents in user-facing pages.
+### Flow 1: Search -> Product -> Back
 
-Acceptance:
+- Baseline proxy: return-to-search context preservation is inconsistent.
+- Baseline measurement method: 20 manual mobile test runs covering query, filter, sort, pagination, and scroll restore checks.
+- Target: at least 95% successful context restoration across the test matrix.
 
-- Components are production-usable in scoped flows.
-- Clear integration guidance is documented.
+### Flow 2: Product quick understanding
 
-### D4: Contributor Handoff Pack
+- Baseline proxy: users need extra scanning time to identify key product facts on dense pages.
+- Baseline measurement method: timed task on mobile viewport for finding key facts on a fixed product sample set.
+- Target: at least 30% reduction in median task time for identifying key facts.
 
-- Architecture note, migration checklist, and before/after summary.
+### Flow 3: Basic edit with folksonomy suggestions
 
-Acceptance:
+- Baseline proxy: suggestion list can show outdated values during rapid typing/navigation.
+- Baseline measurement method: scripted interaction runs and manual verification for stale update behavior.
+- Target: zero stale suggestion updates in validation runs and improved perceived response stability.
 
-- Another contributor can extend one additional flow using the published pattern.
+### Deliverable C: OFF webcomponents integration
 
-## Timeline (Approximately 175 Hours)
+Acceptance criteria:
 
-Community Bonding:
+- At least 2 reusable OFF components integrated in production-facing flows.
+- Integration boundaries and customization notes documented for contributors.
 
-- Confirm final scope with mentor.
-- Freeze target flows and baseline metrics.
+### Deliverable D: Contributor handoff package
 
-Weeks 1 to 3:
+Acceptance criteria:
 
-- Build first slice of shared data layer.
-- Migrate first flow and open incremental PRs.
+- Architecture note for data-layer approach.
+- Migration checklist for extending parity to additional routes.
+- Final report with before/after metrics and demonstration evidence.
 
-Weeks 4 to 6:
+## Execution Plan (175 Hours)
+
+### Community Bonding
+
+- Confirm final scoped flows and endpoint list with mentor.
+- Validate and record baseline metrics for the 3 committed flows using the above measurement methods.
+- Agree on review cadence and definition of done.
+
+### Phase 1 (Weeks 1 to 3)
+
+- Implement first data-layer slice and migrate first flow.
+- Open small, reviewable PRs to reduce integration risk.
+
+### Phase 2 (Weeks 4 to 6)
 
 - Migrate second and third flows.
-- Integrate reusable webcomponents.
-- Validate responsive and accessibility behavior.
+- Integrate webcomponents in selected interfaces.
+- Validate responsive behavior and accessibility checks.
 
-Weeks 7 to 9:
+### Phase 3 (Weeks 7 to 9)
 
-- Performance and robustness pass.
-- Documentation and handoff completion.
-- Final metric report and polish.
+- Performance and reliability refinement.
+- Documentation, migration guide, and final quality pass.
+- Final report with KPI summary.
 
-## Risk Management
+## KPI Tracking
 
-- Scope creep: cap scope at 2 to 3 flows and maintain explicit out-of-scope list.
-- API variability: isolate endpoint differences in adapters.
-- External API instability in development: validate loading and error states with resilient UI behavior.
+- User-facing:
+  - Number of targeted flows improved: exactly 3 committed flows.
+  - For each targeted flow, one baseline metric and one improved metric are documented in the final report.
+  - Accessibility checks passed for newly added interactions.
+  - No newly introduced critical accessibility issues in modified surfaces.
 
-## Communication and Delivery Style
+- Engineering-facing:
+  - API logic duplication reduced by at least 30% in targeted modules.
+  - Reusable components integrated: at least 2.
+  - Contributor onboarding cost reduced via migration documentation and one worked migration example.
 
-- Frequent incremental PRs instead of one large drop.
-- Early mentor checkpoints for scope confirmation.
-- Transparent progress tracking and decision logs.
+## Definition of Done
 
-## Expected Impact
+- Scoped flows are merged and usable on mobile and desktop.
+- Shared typed data-layer utilities are in use for all targeted flows.
+- KPI evidence is included in the final report with before/after snapshots.
+- Documentation package is complete: architecture note, migration checklist, and worked example.
+- Maintainer review feedback from at least one iteration cycle is incorporated.
 
-- Better mobile usability in the most visible product/search journeys.
-- Cleaner, more maintainable integration pattern for contributors.
-- Faster future parity work through reuse of OFF SDK and webcomponents.
+## Communication and Collaboration Plan
+
+- Weekly written update in project channel with progress, blockers, and next steps.
+- Early PR strategy with small increments for fast mentor feedback.
+- Scope changes proposed only with impact note and fallback plan.
+
+## Risks and Mitigation
+
+- Scope creep:
+  - Mitigation: strict cap of 2 to 3 flows and explicit out-of-scope list.
+- API inconsistency across endpoints:
+  - Mitigation: adapters isolate response differences.
+- External API instability during development:
+  - Mitigation: robust loading/error states and testable fallback behavior.
+
+## Why This Proposal Is Strong
+
+This proposal combines immediate user value, measurable engineering value, and roadmap alignment. It is intentionally scoped for reliable delivery in 175 hours and designed for maintainers who prioritize mergeability, evidence, and long-term maintainability.
+
+Strict-maintainer quality gate this proposal now satisfies:
+
+- Concrete scope boundaries.
+- Clear acceptance criteria per deliverable.
+- Quantified KPI and evidence requirements.
+- Explicit definition of done.
 
 ## Project Information
 
@@ -155,6 +208,6 @@ Weeks 7 to 9:
 - Related repositories: https://github.com/openfoodfacts/openfoodfacts-nodejs, https://github.com/openfoodfacts/openfoodfacts-webcomponents
 - Slack channel: #off-explorer
 - Potential mentor: VaiTon
-- Project duration: approximately 175 hours
-- Skills required: TypeScript, Svelte/SvelteKit, HTTP API integration
+- Duration: approximately 175 hours
+- Skills: TypeScript, Svelte and SvelteKit, HTTP API fundamentals
 - Difficulty: Medium
