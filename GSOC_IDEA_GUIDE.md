@@ -1,14 +1,24 @@
-# GSoC 2026 Proposal Draft (One Page)
+# GSoC 2026 Proposal Draft (Maintainer Review Version)
 
 ## Project Title
 
-Mobile-First Feature Parity for Open Food Facts Explorer via Shared Data Layer and Reusable OFF Components
+Mobile-First Feature Parity for Open Food Facts Explorer through a Shared Data Layer and Reusable OFF Components
 
-## Applicant Profile
+## Executive Summary
 
-I am an active contributor to Open Food Facts Explorer with recent work in accessibility, API safety, and UX behavior improvements. I have already worked in the project workflow (issues, PRs, review iteration), and I want to deliver a scoped, high-impact project aligned with Explorer priorities.
+Open Food Facts Explorer is the long-term modern frontend for Open Food Facts. To accelerate adoption and reduce maintenance cost, I propose a focused project that improves 2 to 3 high-impact mobile user flows while introducing a reusable, typed data-access pattern for selected product/search features. The project is intentionally scoped for approximately 175 hours, with measurable outcomes, incremental pull requests, and clear handoff documentation for future contributors.
 
-### Relevant contributions (exact links)
+## Why This Matters Now
+
+- Mobile is the dominant usage context, so friction in core flows has high user impact.
+- Similar API integration logic is repeated across screens, slowing feature delivery.
+- Explorer roadmap priorities already emphasize reuse of OFF SDK and OFF webcomponents.
+
+In practical terms: this project improves user experience immediately and reduces long-term engineering drag.
+
+## Applicant Readiness (Contribution Evidence)
+
+I have already contributed to Explorer in accessibility, reliability, and UX behavior improvements.
 
 - Active PR: https://github.com/openfoodfacts/openfoodfacts-explorer/pull/1230
 - PR: https://github.com/openfoodfacts/openfoodfacts-explorer/pull/1109
@@ -21,76 +31,123 @@ I am an active contributor to Open Food Facts Explorer with recent work in acces
 
 ## Problem Statement
 
-Explorer is the next-generation frontend, but some critical user journeys still need parity and consistency with the standard Open Food Facts website, especially on mobile (the majority usage context). In parallel, similar API logic is repeated across screens, which slows development and increases maintenance burden.
+Explorer needs stronger parity with key experiences from the standard Open Food Facts website, especially on mobile. At the same time, repeated API wiring across components increases cognitive load and maintenance overhead.
 
-In simple terms: users need smoother mobile flows, and contributors need cleaner architecture so features can ship faster.
+Primary problem:
+
+- Users encounter avoidable friction in key product/search journeys.
+
+Secondary problem:
+
+- Contributors duplicate API logic instead of reusing a consistent pattern.
 
 ## Proposed Solution
 
-I propose a scoped parity track that combines user-facing improvements and architecture improvements:
+Deliver a scoped parity track combining architecture and UX improvements:
 
-1. Build a shared, typed data-access layer for selected product/search flows to reduce duplicated API logic.
-2. Improve 2 to 3 high-impact mobile-first user flows end-to-end.
-3. Reuse OFF webcomponents where they provide faster, consistent delivery.
-4. Deliver clear migration documentation so future contributors can extend the same pattern.
-
-This directly supports Explorer goals: frontend/backend decoupling, maintainability, faster feature iteration, and better mobile usability.
-
-## Expected Outcomes and KPI
-
-- 2 to 3 critical user flows improved for mobile and desktop.
-- At least 30% reduction of duplicated API-call logic in targeted modules.
-- At least 2 OFF reusable webcomponents integrated in production-facing flows.
-- Accessibility validation passed for new interactions in scoped pages.
-- Performance on targeted mobile pages improved or maintained while adding functionality.
-- Contributor migration guide published for future parity extensions.
+1. Implement a shared, typed data-access layer for selected product/search endpoints.
+2. Improve 2 to 3 high-value mobile-first user flows end-to-end.
+3. Integrate OFF webcomponents where they speed delivery and increase consistency.
+4. Publish migration and extension guidance for future parity work.
 
 ## Scope
 
 In scope:
 
-- Product/search-related parity work on selected flows only.
-- Shared typed data-access abstraction for scoped endpoints.
-- Component reuse and integration documentation.
+- Selected product/search flows only (maximum 3).
+- Shared data-access abstraction in targeted modules.
+- Reusable component integration and documentation.
 
 Out of scope:
 
-- Full-site parity in one cycle.
-- Full redesign of all pages.
-- Migrating every endpoint in the application.
+- Full-site parity in one GSoC cycle.
+- Global redesign unrelated to scoped flows.
+- Full migration of all API consumers.
 
-## 175-Hour Implementation Plan
+## Deliverables and Acceptance Criteria
 
-Community bonding:
+### D1: Shared Data Layer for Scoped Endpoints
 
-- Finalize exact scoped flows/endpoints with mentors.
-- Baseline current UX and code metrics.
+- Typed wrappers and response mapping for selected APIs.
+- Standardized error/loading handling in migrated flows.
 
-Phase 1 (Weeks 1 to 3):
+Acceptance:
 
-- Implement first data-layer slice and migrate first flow.
-- Open incremental PRs early for feedback.
+- Duplicated API-call logic reduced by at least 30% in targeted modules.
+- No functional regressions in migrated flows.
 
-Phase 2 (Weeks 4 to 6):
+### D2: Mobile-First Parity for 2 to 3 Core Flows
+
+Candidate flows:
+
+- Search to product transition.
+- Product understanding via key panels.
+- Basic edit path for selected fields.
+
+Acceptance:
+
+- Improved interaction clarity and reduced user friction in scoped flows.
+- Accessibility validation passed for new interactions.
+- Mobile performance on targeted pages improved or maintained.
+
+### D3: OFF Webcomponents Adoption
+
+- Integrate at least 2 reusable OFF webcomponents in user-facing pages.
+
+Acceptance:
+
+- Components are production-usable in scoped flows.
+- Clear integration guidance is documented.
+
+### D4: Contributor Handoff Pack
+
+- Architecture note, migration checklist, and before/after summary.
+
+Acceptance:
+
+- Another contributor can extend one additional flow using the published pattern.
+
+## Timeline (Approximately 175 Hours)
+
+Community Bonding:
+
+- Confirm final scope with mentor.
+- Freeze target flows and baseline metrics.
+
+Weeks 1 to 3:
+
+- Build first slice of shared data layer.
+- Migrate first flow and open incremental PRs.
+
+Weeks 4 to 6:
 
 - Migrate second and third flows.
-- Integrate OFF webcomponents in scoped interfaces.
+- Integrate reusable webcomponents.
 - Validate responsive and accessibility behavior.
 
-Phase 3 (Weeks 7 to 9):
+Weeks 7 to 9:
 
-- Performance tuning, cleanup, and bug fixes.
-- Final documentation, before/after metrics, and handoff artifacts.
+- Performance and robustness pass.
+- Documentation and handoff completion.
+- Final metric report and polish.
 
-## Risks and Mitigation
+## Risk Management
 
-- Scope creep: enforce 2 to 3 flow cap and explicit out-of-scope list.
-- API variability: isolate mapping/adapters in the data layer.
-- External API instability in dev: validate loading/error states and fallback UX.
+- Scope creep: cap scope at 2 to 3 flows and maintain explicit out-of-scope list.
+- API variability: isolate endpoint differences in adapters.
+- External API instability in development: validate loading and error states with resilient UI behavior.
 
-## Why this project is high value
+## Communication and Delivery Style
 
-This work adds immediate user value (better mobile journeys), long-term engineering value (less duplicated logic and cleaner architecture), and ecosystem value (greater reuse of OFF SDK and webcomponents). It is practical, measurable, and aligned with OFF priorities.
+- Frequent incremental PRs instead of one large drop.
+- Early mentor checkpoints for scope confirmation.
+- Transparent progress tracking and decision logs.
+
+## Expected Impact
+
+- Better mobile usability in the most visible product/search journeys.
+- Cleaner, more maintainable integration pattern for contributors.
+- Faster future parity work through reuse of OFF SDK and webcomponents.
 
 ## Project Information
 
@@ -99,5 +156,5 @@ This work adds immediate user value (better mobile journeys), long-term engineer
 - Slack channel: #off-explorer
 - Potential mentor: VaiTon
 - Project duration: approximately 175 hours
-- Skills required: TypeScript, Svelte/SvelteKit, HTTP APIs
+- Skills required: TypeScript, Svelte/SvelteKit, HTTP API integration
 - Difficulty: Medium
