@@ -121,13 +121,20 @@
 	let isDark: boolean = $state(false);
 
 	onMount(() => {
+		let isDestroyed = false;
+
 		const mq = window.matchMedia('(prefers-color-scheme: dark)');
 		isDark = mq.matches;
-		mq.addEventListener('change', (e) => (isDark = e.matches));
+		const handleThemeChange = (e: MediaQueryListEvent) => {
+			isDark = e.matches;
+		};
+		mq.addEventListener('change', handleThemeChange);
 
 		(async () => {
 			// Dynamically import Leaflet
-			L = await import('leaflet');
+			const leafletModule = await import('leaflet');
+			if (isDestroyed) return;
+			L = leafletModule;
 
 			mapInstance = L.map(mapContainer, { zoomControl: true, minZoom: MIN_ZOOM }).setView(
 				[20, 0],
@@ -137,10 +144,15 @@
 			// Leaflet injects its own background-color via JS; override it directly
 			mapContainer.style.setProperty('background', 'transparent');
 
-			countryTaxonomy = await getTaxo<Country>('countries', fetch);
+			const taxonomy = await getTaxo<Country>('countries', fetch);
+			if (isDestroyed) return;
+			countryTaxonomy = taxonomy;
 		})();
 
 		return () => {
+			isDestroyed = true;
+			mq.removeEventListener('change', handleThemeChange);
+
 			if (mapInstance) {
 				mapInstance.off();
 				mapInstance.remove();
