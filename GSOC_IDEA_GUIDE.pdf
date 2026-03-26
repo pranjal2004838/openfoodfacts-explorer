@@ -1,0 +1,441 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj
+2 0 obj << /Type /Pages /Kids [ 6 0 R 8 0 R 10 0 R 12 0 R ] /Count 4 >> endobj
+3 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj
+4 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> endobj
+5 0 obj << /Length 3315 >> stream
+BT
+/F1 11 Tf
+/F2 18 Tf
+1 0 0 1 54 738 Tm
+(GSoC 2026 Proposal) Tj
+/F1 11 Tf
+/F2 14 Tf
+1 0 0 1 54 700 Tm
+(Project Title) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 54 682 Tm
+(Mobile-First Feature Parity for Open Food Facts Explorer Through Shared Data Layer and) Tj
+/F1 11 Tf
+1 0 0 1 54 667 Tm
+(Reusable OFF Components) Tj
+/F2 14 Tf
+1 0 0 1 54 644 Tm
+(Candidate Profile and Contribution Evidence) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 54 626 Tm
+(I am an active Open Food Facts Explorer contributor with recent contributions in) Tj
+/F1 11 Tf
+1 0 0 1 54 611 Tm
+(accessibility, API behavior correctness, and UX stability. I have already worked through) Tj
+/F1 11 Tf
+1 0 0 1 54 596 Tm
+(real review cycles and maintainer feedback.) Tj
+/F2 11 Tf
+1 0 0 1 54 573 Tm
+(Contribution evidence:) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 558 Tm
+(? https://github.com/openfoodfacts/openfoodfacts-explorer/pull/1230) Tj
+/F1 11 Tf
+1 0 0 1 66 543 Tm
+(? https://github.com/openfoodfacts/openfoodfacts-explorer/pull/1109) Tj
+/F1 11 Tf
+1 0 0 1 66 528 Tm
+(? https://github.com/openfoodfacts/openfoodfacts-explorer/pull/1100) Tj
+/F1 11 Tf
+1 0 0 1 66 513 Tm
+(? https://github.com/openfoodfacts/openfoodfacts-explorer/pull/1083) Tj
+/F1 11 Tf
+1 0 0 1 66 498 Tm
+(? https://github.com/openfoodfacts/openfoodfacts-explorer/pull/1058) Tj
+/F1 11 Tf
+1 0 0 1 66 483 Tm
+(? https://github.com/openfoodfacts/openfoodfacts-explorer/issues/1157) Tj
+/F1 11 Tf
+1 0 0 1 66 468 Tm
+(? https://github.com/openfoodfacts/openfoodfacts-explorer/issues/1106) Tj
+/F1 11 Tf
+1 0 0 1 66 453 Tm
+(? https://github.com/openfoodfacts/openfoodfacts-explorer/issues/1098) Tj
+/F2 14 Tf
+1 0 0 1 54 430 Tm
+(Problem Statement) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 54 412 Tm
+(Open Food Facts Explorer still has parity gaps in critical mobile user journeys and) Tj
+/F1 11 Tf
+1 0 0 1 54 397 Tm
+(repeated API integration logic across views. This causes user friction and slows) Tj
+/F1 11 Tf
+1 0 0 1 54 382 Tm
+(contributor velocity due to duplicated request/response handling and inconsistent state) Tj
+/F1 11 Tf
+1 0 0 1 54 367 Tm
+(behavior.) Tj
+/F1 11 Tf
+1 0 0 1 54 344 Tm
+(This project addresses both product quality and maintainability by improving three) Tj
+/F1 11 Tf
+1 0 0 1 54 329 Tm
+(committed high-impact flows and introducing a shared typed data-access layer.) Tj
+/F2 14 Tf
+1 0 0 1 54 306 Tm
+(Committed Scope \(Exactly 3 Flows\)) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 288 Tm
+(1. Search -> Product -> Back to Search state continuity.) Tj
+/F1 11 Tf
+1 0 0 1 66 273 Tm
+(2. Product quick-understanding section for mobile-first readability.) Tj
+/F1 11 Tf
+1 0 0 1 66 258 Tm
+(3. Basic edit flow with stable folksonomy autosuggest behavior.) Tj
+/F2 11 Tf
+1 0 0 1 54 235 Tm
+(Implementation surfaces:) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 220 Tm
+(? src/routes/search) Tj
+/F1 11 Tf
+1 0 0 1 66 205 Tm
+(? src/routes/products/[barcode]) Tj
+/F1 11 Tf
+1 0 0 1 66 190 Tm
+(? src/lib/ui/edit-product-steps) Tj
+/F2 11 Tf
+1 0 0 1 54 167 Tm
+(Out of scope:) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 152 Tm
+(? Full parity for all legacy pages) Tj
+/F1 11 Tf
+1 0 0 1 66 137 Tm
+(? Full visual redesign) Tj
+/F1 11 Tf
+1 0 0 1 66 122 Tm
+(? Global migration of all endpoints) Tj
+/F2 14 Tf
+1 0 0 1 54 99 Tm
+(Why These Flows) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 81 Tm
+(? Mobile is the dominant usage context; these are high-frequency mobile journeys.) Tj
+ET
+endstream endobj
+6 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >> endobj
+7 0 obj << /Length 3625 >> stream
+BT
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 738 Tm
+(? They align with maintainer priorities: parity, reliability, and maintainability.) Tj
+/F1 11 Tf
+1 0 0 1 66 723 Tm
+(? Flow 3 is included because on-the-go edits are common on phones; stale suggestions) Tj
+/F1 11 Tf
+1 0 0 1 66 708 Tm
+(directly reduce edit trust and completion.) Tj
+/F2 14 Tf
+1 0 0 1 54 685 Tm
+(Technical Plan) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 667 Tm
+(? Introduce shared typed data-access helpers for the three committed flows.) Tj
+/F1 11 Tf
+1 0 0 1 66 652 Tm
+(? Use openfoodfacts-nodejs SDK where endpoint coverage exists.) Tj
+/F1 11 Tf
+1 0 0 1 66 637 Tm
+(? Use thin custom adapters only for endpoint gaps or route-specific data mapping.) Tj
+/F1 11 Tf
+1 0 0 1 66 622 Tm
+(? Standardize loading, error, and empty states across targeted flows.) Tj
+/F1 11 Tf
+1 0 0 1 66 607 Tm
+(? Integrate at least two reusable OFF webcomponents where reuse reduces complexity.) Tj
+/F2 14 Tf
+1 0 0 1 54 584 Tm
+(Deliverables and Acceptance Criteria) Tj
+/F1 11 Tf
+/F2 12 Tf
+1 0 0 1 54 566 Tm
+(Deliverable A: Shared typed data layer) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 550 Tm
+(? Adopted in all three committed flows.) Tj
+/F1 11 Tf
+1 0 0 1 66 535 Tm
+(? Error and loading states standardized in modified surfaces.) Tj
+/F1 11 Tf
+1 0 0 1 66 520 Tm
+(? Duplicated API integration logic reduced by at least 30 percent in targeted modules.) Tj
+/F1 11 Tf
+1 0 0 1 66 505 Tm
+(? SDK-first implementation documented with adapter boundaries.) Tj
+/F2 12 Tf
+1 0 0 1 54 482 Tm
+(Deliverable B: 3 improved high-impact flows) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 466 Tm
+(? No functional regressions on mobile and desktop for the three flows.) Tj
+/F1 11 Tf
+1 0 0 1 66 451 Tm
+(? Accessibility checks pass for newly introduced interactions.) Tj
+/F1 11 Tf
+1 0 0 1 66 436 Tm
+(? Each flow includes at least one quantified before/after improvement metric.) Tj
+/F2 11 Tf
+1 0 0 1 54 413 Tm
+(Flow-specific acceptance:) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 398 Tm
+(? Flow 1: query, filter, sort, pagination, and scroll context restored on return to) Tj
+/F1 11 Tf
+1 0 0 1 66 383 Tm
+(search.) Tj
+/F1 11 Tf
+1 0 0 1 66 368 Tm
+(? Flow 2: key product facts become visible earlier on mobile without extra navigation.) Tj
+/F1 11 Tf
+1 0 0 1 66 353 Tm
+(? Flow 3: no stale autosuggest overwrite during rapid input changes.) Tj
+/F2 12 Tf
+1 0 0 1 54 330 Tm
+(Deliverable C: Reusable OFF webcomponents) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 314 Tm
+(? At least two OFF webcomponents integrated in production-facing paths.) Tj
+/F1 11 Tf
+1 0 0 1 66 299 Tm
+(? Integration and customization notes documented for contributors.) Tj
+/F2 12 Tf
+1 0 0 1 54 276 Tm
+(Deliverable D: Maintainer handoff package) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 260 Tm
+(? Architecture note for shared data layer.) Tj
+/F1 11 Tf
+1 0 0 1 66 245 Tm
+(? Migration checklist for extending the pattern.) Tj
+/F1 11 Tf
+1 0 0 1 66 230 Tm
+(? Worked migration example.) Tj
+/F1 11 Tf
+1 0 0 1 66 215 Tm
+(? Final KPI report with before/after evidence.) Tj
+/F2 14 Tf
+1 0 0 1 54 192 Tm
+(Baseline and Target Metrics) Tj
+/F1 11 Tf
+/F2 12 Tf
+1 0 0 1 54 174 Tm
+(Flow 1: Search -> Product -> Back) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 158 Tm
+(? Baseline method: 20 manual mobile runs with state-restore matrix.) Tj
+/F1 11 Tf
+1 0 0 1 66 143 Tm
+(? Target: at least 95 percent successful state restoration.) Tj
+/F2 12 Tf
+1 0 0 1 54 120 Tm
+(Flow 2: Product quick understanding) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 104 Tm
+(? Baseline method: timed task on fixed product set in mobile viewport.) Tj
+/F1 11 Tf
+1 0 0 1 66 89 Tm
+(? Target: at least 30 percent reduction in median time to identify key facts.) Tj
+ET
+endstream endobj
+8 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >> endobj
+9 0 obj << /Length 3112 >> stream
+BT
+/F1 11 Tf
+/F2 12 Tf
+1 0 0 1 54 738 Tm
+(Flow 3: Basic edit with autosuggest) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 722 Tm
+(? Baseline method: scripted rapid-input interaction tests and manual verification.) Tj
+/F1 11 Tf
+1 0 0 1 66 707 Tm
+(? Target: zero stale autosuggest updates in validation runs.) Tj
+/F2 14 Tf
+1 0 0 1 54 684 Tm
+(Timeline \(175 Hours\)) Tj
+/F1 11 Tf
+/F2 12 Tf
+1 0 0 1 54 666 Tm
+(Community Bonding) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 650 Tm
+(? Confirm scoped surfaces and acceptance criteria with mentor.) Tj
+/F1 11 Tf
+1 0 0 1 66 635 Tm
+(? Capture baseline metrics and lock reporting template.) Tj
+/F1 11 Tf
+1 0 0 1 66 620 Tm
+(? Finalize review cadence.) Tj
+/F2 12 Tf
+1 0 0 1 54 597 Tm
+(Weeks 1 to 3) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 581 Tm
+(? Implement shared data-layer slice.) Tj
+/F1 11 Tf
+1 0 0 1 66 566 Tm
+(? Migrate Flow 1.) Tj
+/F1 11 Tf
+1 0 0 1 66 551 Tm
+(? Open small reviewable PRs.) Tj
+/F2 12 Tf
+1 0 0 1 54 528 Tm
+(Weeks 4 to 6) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 512 Tm
+(? Migrate Flows 2 and 3.) Tj
+/F1 11 Tf
+1 0 0 1 66 497 Tm
+(? Integrate OFF webcomponents.) Tj
+/F1 11 Tf
+1 0 0 1 66 482 Tm
+(? Complete accessibility and responsive validations.) Tj
+/F2 12 Tf
+1 0 0 1 54 459 Tm
+(Weeks 7 to 9) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 443 Tm
+(? Reliability and performance refinements.) Tj
+/F1 11 Tf
+1 0 0 1 66 428 Tm
+(? Documentation and handoff package.) Tj
+/F1 11 Tf
+1 0 0 1 66 413 Tm
+(? Final KPI report.) Tj
+/F2 14 Tf
+1 0 0 1 54 390 Tm
+(Risk Management) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 372 Tm
+(? Scope creep: strict cap at three committed flows.) Tj
+/F1 11 Tf
+1 0 0 1 66 357 Tm
+(? API inconsistency: isolate transformations in adapters.) Tj
+/F1 11 Tf
+1 0 0 1 66 342 Tm
+(? External API instability: robust loading and error states with deterministic fallback) Tj
+/F1 11 Tf
+1 0 0 1 66 327 Tm
+(behavior.) Tj
+/F2 14 Tf
+1 0 0 1 54 304 Tm
+(Communication Plan) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 286 Tm
+(? Weekly progress update in #off-explorer.) Tj
+/F1 11 Tf
+1 0 0 1 66 271 Tm
+(? Incremental PR strategy for early maintainer feedback.) Tj
+/F1 11 Tf
+1 0 0 1 66 256 Tm
+(? Scope changes only with impact note and fallback plan.) Tj
+/F2 14 Tf
+1 0 0 1 54 233 Tm
+(Definition of Done) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 215 Tm
+(? Three committed flows merged and verified on mobile and desktop.) Tj
+/F1 11 Tf
+1 0 0 1 66 200 Tm
+(? Shared typed data layer used in all targeted surfaces.) Tj
+/F1 11 Tf
+1 0 0 1 66 185 Tm
+(? KPI before/after evidence included in final report.) Tj
+/F1 11 Tf
+1 0 0 1 66 170 Tm
+(? Architecture note, migration checklist, and worked example delivered.) Tj
+/F1 11 Tf
+1 0 0 1 66 155 Tm
+(? At least one full maintainer review iteration addressed.) Tj
+/F2 14 Tf
+1 0 0 1 54 132 Tm
+(Project Information) Tj
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 114 Tm
+(? Repository: https://github.com/openfoodfacts/openfoodfacts-explorer) Tj
+/F1 11 Tf
+1 0 0 1 66 99 Tm
+(? Related repositories: https://github.com/openfoodfacts/openfoodfacts-nodejs,) Tj
+/F1 11 Tf
+1 0 0 1 66 84 Tm
+(https://github.com/openfoodfacts/openfoodfacts-webcomponents) Tj
+/F1 11 Tf
+1 0 0 1 66 69 Tm
+(? Slack: #off-explorer) Tj
+ET
+endstream endobj
+10 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 9 0 R >> endobj
+11 0 obj << /Length 281 >> stream
+BT
+/F1 11 Tf
+/F1 11 Tf
+1 0 0 1 66 738 Tm
+(? Potential mentor: VaiTon) Tj
+/F1 11 Tf
+1 0 0 1 66 723 Tm
+(? Duration: approximately 175 hours) Tj
+/F1 11 Tf
+1 0 0 1 66 708 Tm
+(? Skills: TypeScript, Svelte/SvelteKit, HTTP APIs) Tj
+/F1 11 Tf
+1 0 0 1 66 693 Tm
+(? Difficulty: Medium) Tj
+ET
+endstream endobj
+12 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 11 0 R >> endobj
+xref
+0 13
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000143 00000 n 
+0000000213 00000 n 
+0000000288 00000 n 
+0000003655 00000 n 
+0000003791 00000 n 
+0000007468 00000 n 
+0000007604 00000 n 
+0000010768 00000 n 
+0000010905 00000 n 
+0000011238 00000 n 
+trailer << /Size 13 /Root 1 0 R >>
+startxref
+11376
+%%EOF
