@@ -17,8 +17,8 @@ export async function getFolksonomyValues(fetch: typeof window.fetch, key: strin
 	const folksonomyApi = createFolksonomyApi(fetch);
 	const response = await folksonomyApi.getValues(key);
 	if ('error' in response) {
-		console.error(response.error);
-		return [];
+		console.error('Folksonomy API error:', response.error);
+		throw new Error(`Failed to fetch folksonomy values for key "${key}": ${response.error}`);
 	}
 	return response.data;
 }
